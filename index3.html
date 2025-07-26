@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Favian</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+            background-attachment: fixed;
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 150, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(30, 144, 255, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+            animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes floatEmoji {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            25% { transform: translateX(15px) rotate(5deg); }
+            50% { transform: translateX(0px) rotate(0deg); }
+            75% { transform: translateX(-15px) rotate(-5deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(10, 15, 25, 0.9), rgba(30, 30, 60, 0.8));
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(138, 43, 226, 0.2);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00aaff, #8a2be2, #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            box-shadow: 0 0 40px rgba(138, 43, 226, 0.4);
+            animation: floatEmoji 4s ease-in-out infinite;
+        }
+
+        .intro-text h1 {
+            font-size: 3em;
+            background: linear-gradient(45deg, #00aaff, #8a2be2, #ff6b6b, #00ffff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: gradientShift 6s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .intro-text .subtitle {
+            font-size: 1.2em;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+
+        .motto {
+            font-style: italic;
+            background: linear-gradient(45deg, #00aaff, #8a2be2, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.1em;
+            border-left: 3px solid #8a2be2;
+            padding-left: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .about-card {
+            background: linear-gradient(135deg, rgba(15, 20, 35, 0.9), rgba(30, 30, 60, 0.8));
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(138, 43, 226, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .about-card:hover::before {
+            left: 100%;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(138, 43, 226, 0.3);
+            border-color: rgba(138, 43, 226, 0.6);
+        }
+
+        .about-card h3 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-card .emoji {
+            font-size: 1.5em;
+            animation: floatEmoji 3s ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        .fact-list {
+            list-style: none;
+            color: #c0c0c0;
+        }
+
+        .fact-list li {
+            margin: 12px 0;
+            padding-left: 25px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .fact-list li:hover {
+            color: #8a2be2;
+        }
+
+        .fact-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            background: linear-gradient(45deg, #00aaff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            animation: floatEmoji 2s ease-in-out infinite;
+        }
+
+        .personality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .personality-item {
+            background: linear-gradient(45deg, rgba(0, 170, 255, 0.2), rgba(138, 43, 226, 0.2));
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            color: #ffffff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .personality-item:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, rgba(0, 170, 255, 0.3), rgba(138, 43, 226, 0.3));
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .emoji-line {
+            font-size: 2.5em;
+            text-align: center;
+            margin: 40px 0;
+            letter-spacing: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .emoji-line span {
+            animation: floatEmoji 3s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .emoji-line span:hover {
+            transform: scale(1.3) rotate(15deg);
+        }
+
+        .music-list {
+            background: linear-gradient(135deg, rgba(0, 170, 255, 0.1), rgba(138, 43, 226, 0.1));
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .music-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 12px 0;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .music-item:hover {
+            background: rgba(138, 43, 226, 0.2);
+            transform: translateX(10px);
+        }
+
+        .music-emoji {
+            font-size: 1.3em;
+            animation: floatEmoji 2.5s ease-in-out infinite;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .game-item {
+            background: linear-gradient(45deg, rgba(0, 170, 255, 0.2), rgba(138, 43, 226, 0.2));
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .game-item:hover::before {
+            left: 100%;
+        }
+
+        .game-item:hover {
+            background: linear-gradient(45deg, rgba(0, 170, 255, 0.4), rgba(138, 43, 226, 0.4));
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3);
+        }
+
+        .inspiration-section {
+            background: linear-gradient(135deg, rgba(0, 170, 255, 0.15), rgba(138, 43, 226, 0.15), rgba(255, 107, 107, 0.1));
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .inspiration-quote {
+            font-size: 1.4em;
+            font-style: italic;
+            background: linear-gradient(45deg, #ffffff, #8a2be2, #00aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease-in-out infinite;
+        }
+
+        .connect-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .connect-btn {
+            background: linear-gradient(45deg, rgba(0, 170, 255, 0.3), rgba(138, 43, 226, 0.3));
+            border: 1px solid rgba(138, 43, 226, 0.6);
+            color: #ffffff;
+            padding: 15px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connect-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .connect-btn:hover::before {
+            left: 100%;
+        }
+
+        .connect-btn:hover {
+            background: linear-gradient(45deg, rgba(0, 170, 255, 0.5), rgba(138, 43, 226, 0.5));
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
+        }
+
+        .large-section {
+            grid-column: 1 / -1;
+        }
+
+        .two-column-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .quote-box {
+            background: linear-gradient(45deg, rgba(138, 43, 226, 0.1), rgba(0, 170, 255, 0.1));
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #8a2be2;
+            font-style: italic;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 3em;
+            color: rgba(138, 43, 226, 0.3);
+            position: absolute;
+            top: -10px;
+            left: 15px;
+        }
+
+        .soft-side-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .soft-words {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .soft-word {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, rgba(0, 170, 255, 0.2), rgba(138, 43, 226, 0.2));
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 25px;
+            color: #ffffff;
+            font-size: 1.1em;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(20px) scale(0.8);
+            animation: softWordAppear 0.8s ease-out forwards;
+            animation-delay: var(--delay);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .soft-word::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .soft-word:hover::before {
+            left: 100%;
+        }
+
+        .soft-word:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: linear-gradient(45deg, rgba(0, 170, 255, 0.4), rgba(138, 43, 226, 0.4));
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes softWordAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-10px) scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .soft-side-finale {
+            margin-top: 60px;
+            background: linear-gradient(135deg, rgba(5, 10, 20, 0.95), rgba(15, 20, 40, 0.9));
+            border-radius: 30px;
+            padding: 50px;
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.6),
+                0 0 50px rgba(138, 43, 226, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .soft-side-finale::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 170, 255, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .personal-message {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .personal-message h2 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #ffffff, #8a2be2, #00aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        .message-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .message-line {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin: 15px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: messageAppear 1s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        .message-soft {
+            font-style: italic;
+            color: #b0b0b0;
+            font-size: 1.1em;
+        }
+
+        .message-closing {
+            background: linear-gradient(45deg, #00aaff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 500;
+        }
+
+        @keyframes messageAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .final-connect {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .final-connect h3 {
+            font-size: 1.8em;
+            color: #ffffff;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #ffffff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .connect-subtitle {
+            color: #c0c0c0;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .connect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .final-connect-btn {
+            background: linear-gradient(135deg, rgba(0, 170, 255, 0.15), rgba(138, 43, 226, 0.15));
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            text-decoration: none;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-connect-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .final-connect-btn:hover::before {
+            left: 100%;
+        }
+
+        .final-connect-btn:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: linear-gradient(135deg, rgba(0, 170, 255, 0.3), rgba(138, 43, 226, 0.3));
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.4);
+            border-color: rgba(138, 43, 226, 0.8);
+        }
+
+        .btn-icon {
+            font-size: 2.5em;
+            animation: floatEmoji 3s ease-in-out infinite;
+        }
+
+        .btn-text strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .btn-text small {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .farewell {
+            border-top: 1px solid rgba(138, 43, 226, 0.3);
+            padding-top: 30px;
+            margin-top: 30px;
+        }
+
+        .farewell p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .farewell-small {
+            color: #888;
+            font-size: 1em !important;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .intro-text h1 {
+                font-size: 2.5em;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .emoji-line {
+                font-size: 2em;
+                letter-spacing: 10px;
+                gap: 15px;
+            }
+            
+            .two-column-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .large-section {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="profile-section">
+                <div class="avatar">🧑‍💻</div>
+                <div class="intro-text">
+                    <h1>Hai, Aku Favian!</h1>
+                    <p class="subtitle">Midnight Thinker • Coffee Hunter • Lo-fi Programmer</p>
+                    <p>Pemikir tengah malam, pemburu es kopi, dan pemrogram sambil dengerin lo-fi. Kadang ngoding, kadang mikirin kenapa AC bisa bikin hidup lebih adem (secara harfiah dan emosional).</p>
+                    <!-- Point 35: Coffee Chat Wishlist -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 6.2s">☕</span>Kalau Bisa Ngopi Sama Siapa Aja</h3>
+                <div class="personality-grid">
+                    <div class="personality-item">🚀 Elon Musk</div>
+                    <div class="personality-item">🎵 RM BTS</div>
+                    <div class="personality-item">👨‍💻 Temen ngoding lama</div>
+                    <div class="personality-item">🐱 Kucing random di jalan</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Final Section: Soft Side (Personal Message & Connect) -->
+        <div class="soft-side-finale">
+            <div class="personal-message">
+                <h2><span class="emoji" style="--delay: 0s">🫠</span>Soft Side Gue</h2>
+                <div class="message-content">
+                    <p class="message-line" style="--delay: 0.5s">
+                        Gue gak pengen jadi orang terkenal.
+                    </p>
+                    <p class="message-line" style="--delay: 1s">
+                        Gue cuma pengen bikin sesuatu yang bikin orang senyum,
+                    </p>
+                    <p class="message-line" style="--delay: 1.5s">
+                        kayak mereka.
+                    </p>
+                    <p class="message-line message-soft" style="--delay: 2s">
+                        Gampang mellow denger instrumental. Suka nyimpen ide random.
+                    </p>
+                    <p class="message-line message-soft" style="--delay: 2.5s">
+                        Sering diem, tapi mikir.
+                    </p>
+                    <p class="message-line message-closing" style="--delay: 3s">
+                        Kadang hidup emang kayak ngoding — 
+                    </p>
+                    <p class="message-line message-closing" style="--delay: 3.5s">
+                        banyak bug, tapi ada kepuasan pas akhirnya jalan.
+                    </p>
+                </div>
+            </div>
+
+            <div class="final-connect">
+                <h3>Mau ngobrol atau kolaborasi?</h3>
+                <p class="connect-subtitle">Hit me up! Gue always up buat diskusi tentang tech, musik, atau bahkan teori kenapa AC bisa bikin hidup lebih baik.</p>
+                
+                <div class="connect-grid">
+                    <a href="#" class="final-connect-btn">
+                        <div class="btn-icon">📧</div>
+                        <div class="btn-text">
+                            <strong>Email</strong>
+                            <small>Buat yang serius</small>
+                        </div>
+                    </a>
+                    <a href="#" class="final-connect-btn">
+                        <div class="btn-icon">🧠</div>
+                        <div class="btn-text">
+                            <strong>GitHub</strong>
+                            <small>Liat project gue</small>
+                        </div>
+                    </a>
+                    <a href="#" class="final-connect-btn">
+                        <div class="btn-icon">💬</div>
+                        <div class="btn-text">
+                            <strong>Discord</strong>
+                            <small>Ngobrol santai</small>
+                        </div>
+                    </a>
+                    <a href="#" class="final-connect-btn">
+                        <div class="btn-icon">📷</div>
+                        <div class="btn-text">
+                            <strong>Instagram</strong>
+                            <small>Stories random</small>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="farewell">
+                    <p>Thanks udah baca sampe sini! 🙏</p>
+                    <p class="farewell-small">Jangan lupa ngopi ya, dan semoga AC-nya selalu dingin ❄️</p>
+                </div>
+            </div>
+        </div>
+            </div>
+            <div class="motto">
+                "Coding boleh serius, tapi hidup jangan terlalu kaku."<br>
+                "Kalau stuck, ngopi dulu."
+            </div>
+        </div>
+
+        <div class="about-grid">
+            <!-- Point 2: 3 Fakta Random -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 0s">🎲</span>3 Fakta Random Tentang Aku</h3>
+                <ul class="fact-list">
+                    <li>🐱 Ngefans berat sama kucing, tapi belum punya satu pun</li>
+                    <li>💻 Bisa ngoding sambil ngelamun</li>
+                    <li>🧊 Pernah ngebet banget bikin kulkas portable dari barang bekas</li>
+                </ul>
+            </div>
+
+            <!-- Point 3: What Makes Me Happy -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 0.2s">🌈</span>Apa yang Bikin Gue Happy</h3>
+                <ul class="fact-list">
+                    <li>☕ Es kopi susu</li>
+                    <li>🎧 Musik ambient</li>
+                    <li>🛠️ Nge-oprek alat elektronik</li>
+                    <li>💬 Ngobrol santai sambil ngoding bareng</li>
+                </ul>
+            </div>
+
+            <!-- Point 4: Personality Type -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 0.4s">🧠</span>Tipe Kepribadian Gue</h3>
+                <p style="color: #c0c0c0; margin-bottom: 15px;">INFJ katanya. Tapi bisa jadi ENFP kalau lagi excited.</p>
+                <div class="personality-grid">
+                    <div class="personality-item">Tenang di luar</div>
+                    <div class="personality-item">Chaos di dalam 😅</div>
+                </div>
+            </div>
+
+            <!-- Point 5: Life Moodboard -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 0.6s">🎨</span>Moodboard Hidup Gue</h3>
+                <div class="personality-grid">
+                    <div class="personality-item">🎮 Controller — healing</div>
+                    <div class="personality-item">🧪 Arduino — eksperimen</div>
+                    <div class="personality-item">📚 Keyboard — belajar</div>
+                    <div class="personality-item">🎧 Headphone — music = life</div>
+                </div>
+            </div>
+
+            <!-- Point 7: Let's Connect -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 0.8s">🔗</span>Let's Connect!</h3>
+                <div class="connect-section">
+                    <a href="#" class="connect-btn">
+                        <span>📧</span> Email
+                    </a>
+                    <a href="#" class="connect-btn">
+                        <span>📷</span> Instagram
+                    </a>
+                    <a href="#" class="connect-btn">
+                        <span>🧠</span> GitHub
+                    </a>
+                </div>
+                <p style="color: #c0c0c0; margin-top: 15px; text-align: center;">Ayo ngobrol, atau kirim meme juga boleh.</p>
+            </div>
+
+            <!-- Point 8: Current Playlist -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 1s">🎶</span>Playlist Hidup Gue</h3>
+                <p style="color: #c0c0c0; margin-bottom: 10px;">Lagi sering denger:</p>
+                <div class="music-list">
+                    <div class="music-item">
+                        <span class="music-emoji">🏠</span>
+                        <div>
+                            <strong>"Home"</strong> – BTS<br>
+                            <small style="color: #888;">Feel-good vibes</small>
+                        </div>
+                    </div>
+                    <div class="music-item">
+                        <span class="music-emoji">☕</span>
+                        <div>
+                            <strong>"Coffee"</strong> – beabadoobee<br>
+                            <small style="color: #888;">Perfect coding companion</small>
+                        </div>
+                    </div>
+                    <div class="music-item">
+                        <span class="music-emoji">🌙</span>
+                        <div>
+                            <strong>Lofi beats</strong><br>
+                            <small style="color: #888;">Buat ngoding jam 2 pagi</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Point 9: Life as a Movie -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 1.2s">🎬</span>Kalau Hidup Gue Adalah Film...</h3>
+                <ul class="fact-list">
+                    <li>🎭 Genre-nya: slice of life</li>
+                    <li>🎵 Soundtrack: lo-fi dan suara kipas angin</li>
+                    <li>🎬 Pemeran utama: ya jelas gue lah 😎</li>
+                </ul>
+            </div>
+
+            <!-- Point 10: Emoji Version -->
+            <div class="about-card large-section">
+                <h3><span class="emoji" style="--delay: 1.4s">🤖</span>Versi Singkat Gue dalam Emoji</h3>
+                <div class="emoji-line">
+                    <span style="--i: 0">🧑‍💻</span>
+                    <span style="--i: 1">☕</span>
+                    <span style="--i: 2">🎮</span>
+                    <span style="--i: 3">🎧</span>
+                    <span style="--i: 4">📦</span>
+                    <span style="--i: 5">🛠️</span>
+                    <span style="--i: 6">🐱</span>
+                    <span style="--i: 7">📱</span>
+                    <span style="--i: 8">🌙</span>
+                    <span style="--i: 9">💬</span>
+                </div>
+            </div>
+
+            <!-- Point 11: Weird Things I Like -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 1.6s">🤷‍♂️</span>Hal Aneh Tapi Gue Suka</h3>
+                <ul class="fact-list">
+                    <li>⌨️ Ngetik tanpa liat keyboard</li>
+                    <li>🚗 Bau AC mobil</li>
+                    <li>🌧️ Coding sambil denger suara hujan palsu</li>
+                </ul>
+            </div>
+
+            <!-- Point 12: Weird Dream -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 1.8s">💤</span>Mimpi Aneh yang Pernah Gue Punya</h3>
+                <div class="quote-box">
+                    Bikin AC portable yang bisa jalan sendiri kayak robot dan punya perasaan. (Masih ide, belum realisasi.)
+                </div>
+            </div>
+
+            <!-- Point 13: Currently Learning -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 2s">📚</span>Lagi Belajar Apa?</h3>
+                <ul class="fact-list">
+                    <li>🌐 IoT buat HVAC</li>
+                    <li>🐍 Python</li>
+                    <li>😅 Cara nggak nge-freeze waktu presentasi</li>
+                </ul>
+            </div>
+
+            <!-- Point 14: Me When... -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 2.2s">🧊</span>Gue Banget Kalau Lagi...</h3>
+                <ul class="fact-list">
+                    <li>💻 Ngerjain project coding jam 1 pagi</li>
+                    <li>🛒 Stalking alat elektronik di marketplace</li>
+                    <li>📺 Nonton dokumenter ventilasi (serius)</li>
+                </ul>
+            </div>
+
+            <!-- Point 15: What Friends Say -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 2.4s">💬</span>Kata Temen Gue Tentang Gue</h3>
+                <div class="quote-box">"Lu kayak kulkas — adem, tapi penuh kejutan."</div>
+                <div class="quote-box">"Tenang, tapi bisa chaotic."</div>
+                <div class="quote-box">"Kalau coding, lupa makan."</div>
+            </div>
+
+            <!-- Point 16: Comfort Food -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 2.6s">🍜</span>Comfort Food Gue</h3>
+                <ul class="fact-list">
+                    <li>🍜 Mie rebus</li>
+                    <li>🔥 Ayam geprek level 5</li>
+                    <li>🧀 Roti bakar isi keju + meses</li>
+                </ul>
+            </div>
+
+            <!-- Point 17: Favorite Movies & Series -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 2.8s">🎞️</span>Film & Series Favorit</h3>
+                <div class="personality-grid">
+                    <div class="personality-item">🌌 Interstellar</div>
+                    <div class="personality-item">🃏 Alice in Borderland</div>
+                    <div class="personality-item">🕵️ Spy x Family</div>
+                    <div class="personality-item">🤖 Doraemon The Movie</div>
+                </div>
+            </div>
+
+            <!-- Point 18: Things That Make Me Smile -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 3s">🤭</span>Hal-Hal yang Bikin Gue Senyum Sendiri</h3>
+                <ul class="fact-list">
+                    <li>❄️ AC nyala pas panas</li>
+                    <li>📱 Komentar TikTok random</li>
+                    <li>🐱 Kucing lewat depan rumah</li>
+                </ul>
+            </div>
+
+            <!-- Point 19: If I Were a Drink -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 3.2s">🧋</span>Kalau Gue Jadi Minuman...</h3>
+                <div class="quote-box">
+                    Es teh manis. Adem, manisnya pas, dan bisa bikin tenang.
+                </div>
+            </div>
+
+            <!-- Point 20: Random TikTok Stuff -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 3.4s">📱</span>Hal Random dari TikTok yang Gue Simpen</h3>
+                <ul class="fact-list">
+                    <li>🪣 DIY AC dari ember</li>
+                    <li>💻 Coding aesthetic setup</li>
+                    <li>😴 Lifehack tidur 8 jam dalam 4 jam (masih bingung tapi penasaran)</li>
+                </ul>
+            </div>
+
+            <!-- Point 22: Life Background Music -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 3.6s">🎧</span>Kalau Hidup Ada Background Music...</h3>
+                <div class="music-list">
+                    <div class="music-item">
+                        <span class="music-emoji">🌅</span>
+                        <div><strong>Bangun:</strong> "Sunflower"</div>
+                    </div>
+                    <div class="music-item">
+                        <span class="music-emoji">💻</span>
+                        <div><strong>Ngoding:</strong> Lofi</div>
+                    </div>
+                    <div class="music-item">
+                        <span class="music-emoji">😔</span>
+                        <div><strong>Galau:</strong> Lagu piano random</div>
+                    </div>
+                    <div class="music-item">
+                        <span class="music-emoji">💥</span>
+                        <div><strong>Error:</strong> Windows sound SFX 😭</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Point 23: Green Flags -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 3.8s">✅</span>Green Flags Versi Gue</h3>
+                <ul class="fact-list">
+                    <li>👂 Mau dengerin</li>
+                    <li>🤷 Gak gengsi bilang "nggak tahu"</li>
+                    <li>🔧 Nyimpen toolkit</li>
+                    <li>❄️ Nyalain AC pas gue datang 😌</li>
+                </ul>
+            </div>
+
+            <!-- Point 24: Hot Takes -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 4s">🔥</span>Hot Takes</h3>
+                <ul class="fact-list">
+                    <li>❄️ AC rusak = panik nasional</li>
+                    <li>🎮 Coding = game tapi gak bisa di-save</li>
+                    <li>☕ Ngopi jam 11 malam? YES.</li>
+                </ul>
+            </div>
+
+            <!-- Point 25: Small Things That Make Life Better -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 4.2s">🌤️</span>Hal Kecil Tapi Bikin Hidup Lebih Baik</h3>
+                <ul class="fact-list">
+                    <li>🌸 Nyalain diffuser</li>
+                    <li>🎨 Terminal warna pastel</li>
+                    <li>📁 Nonton YouTube sambil ngerapihin file</li>
+                </ul>
+            </div>
+
+            <!-- Point 26: Favorite Games -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 4.4s">🎮</span>Game Favorit</h3>
+                <div class="game-grid">
+                    <div class="game-item">🏎️ Need for Speed</div>
+                    <div class="game-item">⛏️ Minecraft</div>
+                    <div class="game-item">⚔️ Genshin Impact</div>
+                    <div class="game-item">🚀 Among Us</div>
+                </div>
+            </div>
+
+            <!-- Point 27: Why I Play Games -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 4.6s">🕹️</span>Gue Main Game Buat Apa?</h3>
+                <ul class="fact-list">
+                    <li>😌 Ngelarain stress</li>
+                    <li>🕰️ Nostalgia</li>
+                    <li>☕ Ngisi waktu sambil ngopi</li>
+                </ul>
+            </div>
+
+            <!-- Point 28: Game Characters That Are 'Me' -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 4.8s">🔍</span>Karakter Game yang 'Gue Banget'</h3>
+                <div class="personality-grid">
+                    <div class="personality-item">🦌 Shikamaru</div>
+                    <div class="personality-item">🗿 Zhongli</div>
+                    <div class="personality-item">⛏️ Steve (Minecraft)</div>
+                </div>
+            </div>
+
+            <!-- Point 29: Favorite Game Genres -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 5s">📋</span>Genre Game Favorit</h3>
+                <div class="personality-grid">
+                    <div class="personality-item">🏎️ Racing</div>
+                    <div class="personality-item">🧩 Puzzle</div>
+                    <div class="personality-item">⚔️ RPG</div>
+                    <div class="personality-item">📖 Story-driven</div>
+                </div>
+            </div>
+
+            <!-- Point 30: My Player Type -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 5.2s">💬</span>Tipe Pemain Gue</h3>
+                <ul class="fact-list">
+                    <li>⚡ Tukang revive</li>
+                    <li>🛡️ Support dari belakang</li>
+                    <li>😴 AFK tapi kadang clutch</li>
+                    <li>💰 Nge-loot mulu 😅</li>
+                </ul>
+            </div>
+
+            <!-- Point 31: Life as a Game -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 5.4s">🎮</span>Kalau Hidup Gue Adalah Game</h3>
+                <div class="quote-box">
+                    Open world, banyak side quest, grafik low tapi chill.
+                </div>
+            </div>
+
+            <!-- Point 32: Favorite Artists -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 5.6s">🎤</span>Artis / Musisi Favorit</h3>
+                <div class="personality-grid">
+                    <div class="personality-item">🎵 NIKI</div>
+                    <div class="personality-item">🎶 Joji</div>
+                    <div class="personality-item">🎧 Alan Walker</div>
+                    <div class="personality-item">📝 Fiersa Besari</div>
+                    <div class="personality-item">🌙 Lo-fi playlist anonymous</div>
+                </div>
+            </div>
+
+            <!-- Point 33: Inspiring Fictional Characters -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 5.8s">🎭</span>Karakter Fiksi yang Menginspirasi</h3>
+                <div class="personality-grid">
+                    <div class="personality-item">🤖 Tony Stark</div>
+                    <div class="personality-item">👁️ Gojo Satoru</div>
+                    <div class="personality-item">⚔️ Levi</div>
+                    <div class="personality-item">🤖 Doraemon</div>
+                </div>
+            </div>
+
+            <!-- Point 34: People Who Motivate Me -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 6s">🧠</span>Orang yang Bikin Gue Termotivasi</h3>
+                <ul class="fact-list">
+                    <li>🔧 Tukang servis AC</li>
+                    <li>😊 Temen yang gak ngeluh</li>
+                    <li>💪 Diri sendiri pas lagi kuat-kuatnya</li>
+                </ul>
+            </div>
+
+            <!-- Point 35: Coffee Chat Wishlist -->
+            <div class="about-card">
+                <h3><span class="emoji" style="--delay: 6.2s">☕</span>Kalau Bisa Ngopi Sama Siapa Aja</h3>
+                <div class="personality-grid">
+                    <div class="personality-item">🚀 Elon Musk</div>
+                    <div class="personality-item">🎵 RM BTS</div>
+                    <div class="personality-item">👨‍💻 Temen ngoding lama</div>
+                    <div class="personality-item">🐱 Kucing random di jalan</div>
+                </div>
+            </div>
